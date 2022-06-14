@@ -1,0 +1,82 @@
+﻿@page "/counter"
+
+<PageTitle>Calculator</PageTitle>
+<p>Ferst Number</p>
+<input inputmode="numeric" @bind-value="firstNumber"/>
+<p>Second Number</p>
+<input inputmode="numeric" @bind-value="secondNumber"/>
+<button @onclick="Sum">Sum</button>
+<button @onclick="Subtraction">Subtraction</button>
+<button @onclick="Division">Division</button>
+<button @onclick="Increase">Increase</button>
+<p>Result</p>
+<h2>@result</h2>
+
+<h1 style="color:red">@errorMassage</h1>
+@code {
+    private string firstNumber  { get; set; }  = "111";
+    private string secondNumber  { get; set; }  = "222";
+
+    private int result { get; set; } = 0;
+
+    private void Sum()
+    {
+        var firstNumberResult = 0;
+        var secondNumberResulr = 0;
+        if (int.TryParse(firstNumber, out firstNumberResult) & int.TryParse(secondNumber, out secondNumberResulr))
+        {
+            result = firstNumberResult + secondNumberResulr;
+            errorMassage = "";
+        }
+        else
+        {
+            errorMassage = "ЧИСЛА ВВЕДЕНЫ НЕ ПРАВИЛЬНО";
+        }
+    }
+     private void Division()
+    {
+        var firstNumberResult = 0;
+        var secondNumberResulr = 0;
+        if (int.TryParse(firstNumber, out firstNumberResult) & int.TryParse(secondNumber, out secondNumberResulr))
+        {
+            result = firstNumberResult / secondNumberResulr;
+            errorMassage = "";
+        }
+        else
+        {
+            errorMassage = "ЧИСЛА ВВЕДЕНЫ НЕ ПРАВИЛЬНО";
+        }
+    }
+     private void Increase()
+    {
+        var firstNumberResult = 0;
+        var secondNumberResulr = 0;
+        if (int.TryParse(firstNumber, out firstNumberResult) & int.TryParse(secondNumber, out secondNumberResulr))
+        {
+            result = firstNumberResult * secondNumberResulr;
+            errorMassage = "";
+        }
+        else
+        {
+            errorMassage = "ЧИСЛА ВВЕДЕНЫ НЕ ПРАВИЛЬНО";
+        }
+    }
+     private void Subtraction()
+    {
+        var firstNumberResult = 0;
+        var secondNumberResulr = 0;
+        if (int.TryParse(firstNumber, out firstNumberResult) & int.TryParse(secondNumber, out secondNumberResulr))
+        {
+            result = firstNumberResult - secondNumberResulr;
+            errorMassage = "";
+        }
+        else
+        {
+            errorMassage = "ЧИСЛА ВВЕДЕНЫ НЕ ПРАВИЛЬНО";
+        }
+    }
+
+    private string errorMassage { get; set; } = "";
+}
+
+
